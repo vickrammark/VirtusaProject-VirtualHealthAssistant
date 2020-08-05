@@ -1,0 +1,164 @@
+.firstContainerImage
+{
+background-image:url(../images/doctorBackgorund.jpg);
+background-size:cover;
+min-height:450px;
+padding:0px;
+padding:15px; 
+}
+.close:hover
+{
+    cursor: pointer;
+}
+select option
+{
+    font-size: 20px;
+}
+.alert
+{
+ display:none;     
+}
+.firstContainer
+{
+    margin:20px; 
+}
+.form-label
+{
+   font-size:20px;  
+}
+.Fname input
+{
+    font-size: 20px;
+}
+.PatientSuggestionContainer
+{
+    background-color:white; 
+    margin: 30px;
+    margin-left:0px; 
+    padding: 20px;
+}
+.PateintSuggestionHeader
+{
+    margin:10px;
+    margin-top:0px; 
+}
+.bg-warning
+    {
+        color:white;
+        font-size:17px;
+        text-align: center;
+        margin:5px;
+        border-radius:5px;
+        padding:5px; 
+    }
+.warnName
+{
+    display: none;
+}
+.warnPass
+{
+    display:none; 
+}
+.navbar
+{
+    background-color:dodgerblue; 
+}
+.fromLeft
+{
+    display: flex;
+    justify-content:flex-end; 
+    width:100%;
+}
+.navbar-nav li
+{
+    margin: 5px;
+}
+.navbar-nav
+{
+    width: 100%;
+}
+ .fromLeft div a
+     {
+        margin:5px; 
+     }
+.navbar-nav li
+     {
+         transition: transform .3s ease;
+     }
+.navbar-nav li:hover
+{
+    transform: scale(1.1);
+}
+.fromLeft div a
+{
+     transition: transform 0.3s ease;
+}   
+.fromLeft div a:hover
+{
+       transform:scale(1.1);     
+}
+
+@media screen and (max-width:550px)
+{
+    .firstContainer
+    {
+        margin:0px auto; 
+    }
+    .firstContainerImage
+    {
+        background-image:none;
+        background-color:dodgerblue;
+    }
+    .btn
+    {
+        background-color:tomato; 
+    }
+    .navbar
+    {
+        margin-bottom: 10px;
+        background-color:darkorange; 
+    }
+    .navbar .navbar-nav .nav-item
+    {
+        border: 1px solid white;
+    }
+    .fromLeft div a
+    {
+        border: 1px solid white;
+    }
+    
+    .fromLeft
+     {
+         display: block;
+         text-align: center;
+     }
+     .fromLeft div 
+     {
+       padding-left:0px;
+       padding-right: 0px;
+       display:block;
+       width:100%;
+       margin-bottom:10px; 
+     }
+     .navbar-nav
+     {
+         text-align: center;
+     }
+     .LRbutton
+     {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content:space-around;
+         align-items: center;
+         
+     }
+     .forget
+     {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content:center;
+         align-items: center;    
+     }
+
+}
+

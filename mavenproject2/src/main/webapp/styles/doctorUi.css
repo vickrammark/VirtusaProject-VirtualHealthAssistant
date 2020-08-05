@@ -1,0 +1,405 @@
+*
+{
+   box-sizing:border-box;   
+}
+body{
+    position: relative;
+}
+.fromLeft
+{
+    display: flex;
+    justify-content:flex-end; 
+    width:100%;
+}
+.navbar-nav li
+{
+    margin: 5px;
+}
+.navbar-nav
+{
+    width: 100%;
+}
+ .fromLeft div a
+     {
+        margin:5px; 
+     }
+.navbar-nav li
+     {
+         transition: transform .3s ease;
+     }
+.navbar-nav li:hover
+{
+    transform: scale(1.1);
+}
+.fromLeft div a
+{
+     transition: transform 0.3s ease;
+}   
+.fromLeft div a:hover
+{
+       transform:scale(1.1);     
+}
+.fifthContainer
+{
+    background-color:white;
+    padding: 15px;
+}
+.fifthContainer1
+{
+    text-align: center;
+    margin: 15px;
+}
+.sideFifthContainer
+{
+    text-align: center;
+}
+.row
+{
+    margin: 0px;
+}
+.menuIcon
+{
+   text-align: left;
+   font-size:20px; 
+   margin-left:10px; 
+}
+.menuHeader
+{
+   display:flex;
+   flex-wrap:wrap;
+   justify-content:center;
+   align-items: center;
+}
+.row1
+{
+  border-bottom:1px solid black;   
+  padding:10px; 
+}
+.menuList
+{
+    position: absolute;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center; 
+    height:550px; 
+    padding:15px; 
+    left:-50%; 
+    z-index: 1;
+}
+.profileContainer
+{
+    display:"none";
+}
+.userName
+{
+    text-align: center;
+}
+
+.imgContainer
+{
+   border-radius:90px;
+   padding:10px; 
+   border:1px solid white;
+   align-items: center;
+   margin:10px; 
+}
+.profileImage
+{
+   border-radius:70px;
+   padding:5px; 
+  height:150px;
+ width: 150px;
+}
+html {
+  overflow-y:   scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+.mainContent
+{
+ height:550px;
+ overflow-y:scroll;
+width:100%;
+}
+.menuIcon,.menuOpener
+{
+  cursor:pointer;
+  transition:transform 0.2s ease; 
+}
+.menuIcon:hover,.menuOpener:hover
+{
+   transform:scale(1.1);  
+}
+.cardDecker
+{
+display:flex;
+flex-wrap:wrap;
+justify-content:space-around;
+align-items:center;   
+height:100%; 
+width:100%; 
+}
+.card
+{
+   width: 250px; 
+  height:100%; 
+  margin:10px; 
+}
+.menuBar
+{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items: center;
+    height:100%;
+    width:100%; 
+    font-size:20px; 
+    
+}
+.appointmentContainer
+{
+   display: none;
+   height:100%;
+   width:100%; 
+}
+.card-header
+{
+ text-align:center; 
+ margin-top:10px;
+ margin-bottom:10px;  
+}
+.ProifleLink,.profile,.pateint,.patientLink,.records,.recordsLink,.appointment,.appointmentLink,.mail,.mailLink,.Home
+{
+        transition:transform 0.3s ease; 
+}
+.profile:hover,.pateint:hover,.records:hover,.appointment:hover,.mail:hover,.Home:hover
+{
+    transform:scale(1.2); 
+    cursor: pointer;
+}
+.card-text
+{
+   text-align:center; 
+   margin-top:10px;
+   margin-bottom:10px; 
+}
+.profileContainer
+{
+  display: none;  
+  background-color:orange; 
+}
+.alert
+{
+    display: none;
+}
+.close:hover
+{
+    cursor:pointer; 
+}
+.sideContainer1,.sideContainer2,.sideContainer3
+{
+    margin: 20px auto;
+    padding:10px; 
+}
+.sideContainer3
+{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center; 
+}
+.updater
+{
+   position:absolute;
+   top:10%;
+   left:50%;
+   height:200px;
+   width:300px; 
+   background-color:white;
+   z-index: 2;
+   display: none; 
+   animation-name:animate;
+   animation-duration: 0.8s;
+   animation-timing-function:ease-in-out; 
+   border-radius:15px; 
+   padding:20px; 
+}
+@keyframes animate
+{
+    0%{transform:scale(0)}
+    100%{transform:scale(1)}
+}
+.updateContainer
+{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items: center;
+    font-size:20px; 
+}
+.updateContent
+{
+   text-align:center;  
+}
+.appointmentContent
+{
+      height:100%;
+      width:100%;
+      overflow-y:scroll; 
+}
+.appointmentContainer
+{
+      height:100%;
+      width:100%; 
+      overflow-y:scroll; 
+}
+.patImage
+{
+   height:150px;
+   width:150px;
+   border-radius:100px;
+   padding:5px; 
+   border:1px solid black; 
+}
+.patientDetailContainer
+{
+   background-color:white;
+   padding:15px;
+   margin:15px;
+   font-size:20px;
+   border-radius:15px; 
+}
+.appointmentMainContainer
+{
+  display:flex;
+  flex-wrap:wrap;
+  width:100%;
+  justify-content:space-around;
+  align-items:center; 
+  padding:20px; 
+}
+.decidingContainer
+{
+   display:flex;
+   flex-wrap:wrap;
+   justify-content:space-around;
+   align-items:center; 
+}
+.appointmentDividingContainer
+{
+    background-color:orange; 
+    border-radius:15px;
+    margin:20px; 
+    padding:20px; 
+}
+.appointmentFixingContainer
+{
+   display:none; 
+   animation-name:fixing;
+   animation-duration:0.5s;
+   animation-iteration-count:1;
+   animation-timing-function:ease-in-out; 
+   background-color:white;
+   font-size:20px;
+   padding:15px;
+   border-radius:15px; 
+}
+.goOut
+{
+   animation-name:goOut;
+   animation-duration:0.5s;
+   animation-iteration-count:1;
+   animation-timing-function:ease-in-out;    
+}
+.confirmBox
+{
+   display:flex;
+   flex-wrap:wrap;
+   justify-content: center;
+   align-items: center;
+}
+@keyframes fixing
+{
+  0%{transform:scale(0)}
+  100%{transform:scale(1)}  
+}
+@keyframes goOut
+{
+  0%{transform:scale(1)}
+  100%{transform:scale(0)}  
+}
+.onFail
+{
+   display:none; 
+}
+.onSuccess
+{
+   display:none; 
+}
+.onSuccess span:hover
+{
+    cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+     .fromLeft
+     {
+         display: block;
+         text-align: center;
+     }
+     *
+     {
+       font-size:20px;   
+     }
+     body
+     {
+       overflow-x:hidden;   
+     }
+     .fromLeft div 
+     {
+       padding-left:0px;
+       padding-right: 0px;
+       display:block;
+       width:120%;
+       margin-bottom: 10px;
+     }
+   .navbar .navbar-nav .nav-item
+    {
+        border: 1px solid white;
+    }
+    .fromLeft div a
+     {
+        border: 1px solid white;
+     }
+     .nav-item
+     {
+         display: block;
+         margin-bottom:7px; 
+     }
+     .navbar-nav
+     {
+         text-align: center;
+     }
+     .menuList
+    {
+    position: absolute;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center; 
+    height:550px; 
+    padding:15px; 
+    left:-100%; 
+    z-index: 1;
+    }
+}
+
+
+

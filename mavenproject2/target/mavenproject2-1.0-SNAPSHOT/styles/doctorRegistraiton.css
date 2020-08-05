@@ -1,0 +1,121 @@
+.alert
+{
+    display: none;
+}
+.close:hover
+{
+    cursor:pointer; 
+}
+.firstContainer
+{
+    margin:20px;
+    padding: 10px;
+}
+.sideContainer1,.sideContainer2,.sideContainer3
+{
+    margin: 0px auto;
+}
+btn
+{
+    transition:transform 80ms ease-in-out;
+}
+.btn:active
+{
+    transform: scale(0.8);
+}
+.header
+{
+    text-align: center;
+    border-bottom:1px solid black; 
+    padding:10px; 
+}
+.fromLeft
+{
+    display: flex;
+    justify-content:flex-end; 
+    width:100%;
+}
+.navbar-nav li
+{
+    margin: 5px;
+}
+.navbar-nav
+{
+    width: 100%;
+}
+ .fromLeft div a
+     {
+        margin:5px; 
+     }
+.navbar-nav li
+     {
+         transition: transform .3s ease;
+     }
+.navbar-nav li:hover
+{
+    transform: scale(1.1);
+}
+.fromLeft div a
+{
+     transition: transform 0.3s ease;
+}   
+.fromLeft div a:hover
+{
+       transform:scale(1.1);     
+}
+.fifthContainer
+{
+    background-color:white;
+    padding: 15px;
+}
+.fifthContainer1
+{
+    text-align: center;
+    margin: 15px;
+}
+.sideFifthContainer
+{
+    text-align: center;
+}
+.row
+{
+    margin: 0px;
+}
+
+@media only screen and (max-width: 600px) {
+
+     .fromLeft
+     {
+         display: block;
+         text-align: center;
+     }
+     .fromLeft div 
+     {
+       padding-left:0px;
+       padding-right: 0px;
+       display:block;
+       width:100%;
+       margin-bottom: 10px;
+     }
+      .navbar .navbar-nav .nav-item
+    {
+        border: 1px solid white;
+    }
+    .fromLeft div a
+     {
+        border: 1px solid white;
+     }
+     .nav-item
+     {
+         display: block;
+         margin-bottom:7px; 
+     }
+     .navbar-nav
+     {
+         text-align: center;
+     }
+}
+
+
+
+

@@ -1,0 +1,132 @@
+.fromLeft
+{
+    display: flex;
+    justify-content:flex-end; 
+    width:100%;
+}
+.navbar-nav li
+{
+    margin: 5px;
+}
+.navbar-nav
+{
+    width: 100%;
+}
+ .fromLeft div a
+     {
+        margin:5px; 
+     }
+.navbar-nav li
+     {
+         transition: transform .3s ease;
+     }
+.navbar-nav li:hover
+{
+    transform: scale(1.1);
+}
+.fromLeft div a
+{
+     transition: transform 0.3s ease;
+}   
+.fromLeft div a:hover
+{
+       transform:scale(1.1);     
+}
+.fifthContainer
+{
+    background-color:white;
+    padding: 15px;
+}
+.fifthContainer1
+{
+    text-align: center;
+    margin: 15px;
+}
+.sideFifthContainer
+{
+    text-align: center;
+}
+.row
+{
+    margin: 0px;
+}
+.card
+{
+    box-shadow: 0px -30px 0px -15px rgb(30,70,190),0px -55px 0px -25px rgb(255,20,147),0px -85px 0px -40px rgb(255,255,0),0px 0px 20px 30px rgba(0,0,0,0.1);
+    animation-name:animate;
+    animation-duration:2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+@keyframes animate
+{
+    0%{transform:scale(1)}
+    25%{transform:scale(1.3)}
+    50%{transform:scale(0.4)}
+    60%{transform:scale(1.3)}
+    75%{transform:scale(1.1)}
+    80%{transform:scale(1.2)}
+    100%{transform:scale(1)}
+}
+.btn
+{
+   transition: transform 80ms ease; 
+}
+.btn:active
+{
+    transform: scale(0.8);
+}
+
+.card-title,.card-text
+{
+    font-size:20px; 
+    padding:20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.mainContainer
+{
+    background-color:rgb(30,144,255);
+    height:100vh;
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items: center;
+}
+.mainContentCard
+{
+    
+}
+@media only screen and (max-width: 600px) {
+     .fromLeft
+     {
+         display: block;
+         text-align: center;
+     }
+     .fromLeft div 
+     {
+       padding-left:0px;
+       padding-right: 0px;
+       display:block;
+       width:100%;
+       margin-bottom: 10px;
+     }
+      .navbar .navbar-nav .nav-item
+    {
+        border: 1px solid white;
+    }
+    .fromLeft div a
+     {
+        border: 1px solid white;
+     }
+     .nav-item
+     {
+         display: block;
+         margin-bottom:7px; 
+     }
+     .navbar-nav
+     {
+         text-align: center;
+     }
+}
+

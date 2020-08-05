@@ -1,0 +1,15 @@
+.firstContainer
+{
+    border:1px solid white; 
+}
+.header
+{
+   border-radius:5px;
+   color: white;
+   padding: 10px;
+   text-align: center;
+}
+.alert
+{
+    display: none;
+}
