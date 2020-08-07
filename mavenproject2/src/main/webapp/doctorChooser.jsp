@@ -56,8 +56,6 @@
                     response.sendRedirect("/Login.jsp");
                 }
             %>
-            var email="<%=email%>";
-            localStorage.setItem("email",email);
         </script>
     </body>
 </html>
