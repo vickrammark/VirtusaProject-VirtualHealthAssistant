@@ -67,6 +67,8 @@
                     response.sendRedirect("/Login.jsp");
                 }
               %>
+                 var eamil=<%=email%>;
+                 alert(eamil);
         </script>
     </body>
 </html>
