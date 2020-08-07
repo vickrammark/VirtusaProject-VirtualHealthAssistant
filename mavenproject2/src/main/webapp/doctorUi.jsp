@@ -33,10 +33,10 @@
                </ul>
               <div class="fromLeft">
                    <div class="nav-item">
-                       <a class="nav-link" href="Login.jsp" style="color: white;font-size:20px;font-weight:bold">Login</a>
+                       <a class="nav-link" href="LogOut.jsp" style="color: white;font-size:20px;font-weight:bold">LogOut</a>
                    </div>                   
                    <div class="nav-item">
-                       <a class="nav-link" href="signUpSelector.jsp" style="color: white;font-size:20px;font-weight:bold">SignUp</a>
+                       <a class="nav-link" href="signUpSelector.jsp" style="color: white;font-size:20px;font-weight:bold">Donate Us</a>
                    </div>
                 </div>
           </nav>
@@ -215,6 +215,11 @@
                    
                </div>
            </div>
+           <div class="patientContainer">
+               <div class="patientContent">
+                   
+               </div>
+           </div>
        </div>
            <div class='updater'>
                <span class="close">&times;</span>
@@ -265,6 +270,7 @@
                $(".appointmentContainer").css("display","none");
                $(".menuHeaderContent").html("Your Profile");
                $(".menuHeaderContent").css("font-size","20px");
+               $(".patientContainer").css("display","none");                                 
             });
             $(".HomeLink").on("click",function(){
                $(".profileContainer").css("display","none"); 
@@ -272,6 +278,7 @@
                $(".appointmentContainer").css("display","none");
                $(".menuHeaderContent").html("Doctor Platform");
                $(".menuHeaderContent").css("font-size","20px");
+               $(".patientContainer").css("display","none");                                 
            });
             $(".profileContainer").on("click",function(){
                $(".menuList").animate({
@@ -558,14 +565,19 @@
                    $(".cardDecker").css("display","none");
                    $(".appointmentContainer").css("display","block");
                    $(".appointmentContent").html("");
+                   $(".patientContainer").css("display","none");                  
                    $.ajax({
                        type:"POST",
                        url:"doctorAppointmentController",
                        data:{
-                           email:email
+                           email:email,
+                           function:"request"
                        },
                        success: function (data, textStatus, jqXHR) {
-//                           alert(data);
+                           alert(data);
+                           $(".appointmentContent").html("");
+                           if(data.includes("|"))
+                           {    
                            patientDetailArray=data.split("|");
                            newRequest=patientDetailArray[patientDetailArray.length-1];
                           for(var x=0;x< patientDetailArray.length-1;x++)
@@ -586,13 +598,13 @@
                                        \n\
                                         </div> \n\
                                          <div class='AppointmentFixing"+AppointmentDetailArray[5]+" appointmentFixingContainer'> \n\
-\n\                                                 <div class='alert alert-dismissible alert-danger onFail'> \n\
-                                                        Sorry, Appointment cant be fixed <span clas='close' data-dismiss='alert'>&times;</span>   \n\
-                                                    </div>         \n\
+\n\                                             <div class='alert alert-dismissible alert-danger onFail'> \n\
+                                                   Sorry, Appointment cant be fixed <span clas='close' data-dismiss='alert'>&times;</span>   \n\
+                                                </div>         \n\
                                                       \n\
-                                                    <div class='alert alert-dismissible alert-success onSuccess'> \n\
-                                                        Succefully fixed the appointment <span clas='close' data-dismiss='alert'>&times;</span>   \n\
-                                                    </div>         \n\
+                                                <div class='alert alert-dismissible alert-success onSuccess'> \n\
+                                                    Succefully fixed the appointment <span clas='close' data-dismiss='alert'>&times;</span>   \n\
+                                                </div>         \n\
                                                <form>\n\
                                                    <div class='form-group'>\n\
                                                         <label for='appDate'>Appointment Date :</label>  \n\
@@ -604,8 +616,8 @@
                                                    </div>     \n\
                                                </form>\n\
                                                 <div class='confirmBox'> \n\
-                                                <button class='btn btn-primary confirmButton' id='"+AppointmentDetailArray[5]+"'>Confirm</button> \n\
-                                                   </div>                            \n\
+                                                    <button class='btn btn-primary confirmButton' id='"+AppointmentDetailArray[5]+"'>Confirm</button> \n\
+                                                </div>                            \n\
                                               \n\
                                          </div>     \n\
                                         </div> \n\
@@ -622,7 +634,12 @@
                              $(".patientImage"+x).attr("src","./pateintimageRetriver?email="+patientImageArray[x]+"&role=patient");
                           }
                      }
-                       
+                  
+                  else
+                  {
+                     $(".appointmentContent").html("Sorry No New Appointments"); 
+                  }
+                 }
                   });
                });
                var acceptId;
@@ -674,6 +691,7 @@
                           function:"cancel"
                       },
                       success: function (data, textStatus, jqXHR) {
+                          
                      }
                   }); 
                });
@@ -685,7 +703,7 @@
                   data:{
                   functoin:"notification",
                   email:email,
-                  role:"doctr"
+                  role:"doctor"
                   },
                   success: function (data, textStatus, jqXHR) {
                       if(data!=="0")
@@ -700,7 +718,79 @@
                 });
                },2000);
              });  
-               
+             var patientImageArray1=new Array();
+               var patientDetailArray1=new Array();
+               var AppointmentDetailArray1=new Array();
+              $(".patientLink").on("click",function(){
+                  $(".patientContent").html("");
+                  $(".profileContainer").css("display","none");
+                  $(".cardDecker").css("display","none");
+                  $(".appointmentContainer").css("display","none");
+                  $(".appointmentContent").html("");
+                  $(".patientContainer").css("display","block");
+                  $.ajax({
+                       type:"POST",
+                       url:"doctorAppointmentController",
+                       data:{
+                           email:email,
+                           function:"confirmed"
+                       },
+                       success: function (data, textStatus, jqXHR) {
+                           $(".appointmentContent1").html("");
+                           if(data.includes("|"))
+                           {    
+                           patientDetailArray1=data.split("|");
+                          for(var x=0;x< patientDetailArray1.length-1;x++)
+                          {                               AppointmentDetailArray1=patientDetailArray1[x].split(",");
+                              patientImageArray1.push(AppointmentDetailArray1[1]);
+                              $(".patientContent").append(
+                               "<div class='appointmentDividingContainer1' id='box"+AppointmentDetailArray1[5]+"'>\n\
+                                    <div class='alert alert-success updateMessage'>\n\
+                                        Successfully Updated the Appointment     \n\
+                                    </div>  \n\
+                                    <div class='appointmentMainContainer1'>\n\
+                                        <div class='.patientImageContainer'>\n\
+                                             <img class='patientImage1"+x+" patImage' src=''> \n\
+                                                  \n\
+                                        </div>\n\
+                                        <div class='patientDetailContainer1"+AppointmentDetailArray1[5]+" appointmentFixedContent'> \n\
+                                               <h4>Patient Request For Appointment</h4>               \n\
+                                               <p>Patient Name : "+AppointmentDetailArray1[0]+"</p>\n\
+                                               <p>Patient Email : "+AppointmentDetailArray1[1]+"</p>  \n\
+                                               <p>Patient Phone Number : "+AppointmentDetailArray1[2]+"</p>\n\
+                                               <p>Patient Address : "+AppointmentDetailArray1[3]+"</p> \n\
+                                               <p>Patient Place Name : "+AppointmentDetailArray1[4]+"</p> \n\
+                                         </div>\n\
+                                          <div class='patientApppointmentContainer"+AppointmentDetailArray1[5]+" appointmentFixedContent'>\n\
+                                                <p>Appointment Date : "+AppointmentDetailArray1[6]+"</p> \n\
+                                                <p>Appointment Reason : "+AppointmentDetailArray1[7]+" </p>  \n\
+                                                <p>Appointment Time : "+AppointmentDetailArray1[8]+"</p> \n\
+                                                <p>Appointment Confirmation : "+AppointmentDetailArray1[9]+"    \n\
+                                          </div>      \n\
+                                    </div>\n\
+                                    <div class='decidingContainer' id='"+AppointmentDetailArray1[5]+"'>\n\
+                                        <button class='btn btn-primary updateAppointment' id='"+AppointmentDetailArray1[5]+"'>Update</button> \n\
+                                        <button class='btn btn-danger cancelApointment id='"+AppointmentDetailArray1[5]+"'>Cancel</button>   \n\
+                                    </div>     " 
+                                       
+                                        
+                              );
+                          }
+                          for(var x=0;x<patientImageArray1.length;x++)
+                          {
+                             $(".patientImage1"+x).attr("src","./pateintimageRetriver?email="+patientImageArray1[x]+"&role=patient");
+                          }
+                     }
+                  
+                  else
+                  {
+                     $(".appointmentContent1").html("Sorry No New Appointments"); 
+                  }
+                }
+     
+                 });
+
+               });
         </script>
     </body>
 </html>
