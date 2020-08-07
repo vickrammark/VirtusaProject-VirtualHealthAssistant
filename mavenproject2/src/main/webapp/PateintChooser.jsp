@@ -60,7 +60,15 @@
             </div>
 
         <script>
-            var email="<%=(String)request.getAttribute("message")%>";
+              <%
+                HttpSession session1=request.getSession();
+                String email=(String)session1.getAttribute("message");
+                if(email.equals(""))
+                {
+                    response.sendRedirect("Login.jsp");
+                }
+            %>
+            var email="<%=email%>";
             localStorage.setItem("email",email);
         </script>
     </body>
