@@ -791,6 +791,12 @@
                  });
 
                });
+               $(document).on("click",".updateAppointment",function(){
+                  $.ajax({
+                      type:"post",
+                      url:""
+                  }) 
+               });
         </script>
     </body>
 </html>
