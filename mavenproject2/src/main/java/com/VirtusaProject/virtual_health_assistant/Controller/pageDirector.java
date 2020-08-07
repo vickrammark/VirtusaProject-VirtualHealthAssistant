@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,31 +35,31 @@ public class pageDirector extends HttpServlet {
         resp.setContentType("text/html");
         String role=req.getParameter("role");
         String Name=req.getParameter("Name");
-        String Email=req.getParameter("Email");
+        String email=req.getParameter("Email");
         String Password=req.getParameter("Password");
         checkUser ch=new checkUser();
         try {
-            if(ch.checkUser(Name, Email, Password,role,out))
+            if(ch.checkUser(Name, email, Password,role,out))
             {
+             HttpSession session =req.getSession();
                 
                 if(role.equals("doctor"))
                 {
-                    String email=Email;
-                    req.setAttribute("message",email); 
-                    RequestDispatcher rd=req.getRequestDispatcher("/doctorChooser.jsp");
-                    rd.forward(req, resp);
+                   
+                    session.setAttribute("message",email); 
+                    resp.sendRedirect("doctorChooser.jsp");
                 }
                 else if(role.equals("patient"))
                 {
-                    String email=Email;
-                    req.setAttribute("message",email);
-                    RequestDispatcher rd=req.getRequestDispatcher("/PateintChooser.jsp");
-                    rd.forward(req, resp);
+                   
+                    session.setAttribute("message",email); 
+                    resp.sendRedirect("PateintChooser.jsp");
                 }
                 else if(role.equals("lab technician"))
                 {
-                    RequestDispatcher rd=req.getRequestDispatcher("/labRegistration.jsp");
-                    rd.forward(req, resp);
+                    
+                    session.setAttribute("message",email); 
+                    resp.sendRedirect("/labChooser.jsp");
                 }
             }
             else
