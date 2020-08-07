@@ -7,10 +7,13 @@ package com.VirtusaProject.virtual_health_assistant.Controller;
 
 import com.VirtusaProject.virtual_health_assistant.modal.acceptRequestModal;
 import com.VirtusaProject.virtual_health_assistant.modal.cancelRequestModal;
+import com.VirtusaProject.virtual_health_assistant.modal.updaterModal;
 import com.VirtusaProject.virtual_health_assitant.dao.accpetRequestDao;
 import com.VirtusaProject.virtual_health_assitant.dao.cancelRequestDao;
+import com.VirtusaProject.virtual_health_assitant.dao.updaterDao;
 import com.VirutsaProject.virtual_health_assistant.Setter.acceptRequestSetter;
 import com.VirutsaProject.virtual_health_assistant.Setter.cancelRequestSetter;
+import com.VirutsaProject.virtual_health_assistant.Setter.updaterSetter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -59,6 +62,27 @@ public class AppointmentFixerandCancelerController extends HttpServlet {
             try
             {   
             result=cd.cancelRequest(cs);
+            }
+            catch(Exception ex)
+            {
+                out.println(ex.getMessage());
+            }
+            resp.setContentType("text/html");
+            resp.getWriter().write(result);
+        }
+        else if(function.equals("update"))
+        {
+             String cid=req.getParameter("presId");
+             String AppTime=req.getParameter("AppTime");
+             String AppDate=req.getParameter("AppDate");
+             String AppConfirmation=req.getParameter("AppConfirmation");
+             updaterModal um=new updaterModal();
+             updaterSetter us=um.setPresscribeId(cid, AppDate, AppTime, AppConfirmation);
+             updaterDao ud=new updaterDao();
+             
+            try
+            {   
+            result=ud.updateAppointment(us);
             }
             catch(Exception ex)
             {
