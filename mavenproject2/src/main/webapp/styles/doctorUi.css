@@ -247,18 +247,19 @@ width:100%;
 {
    text-align:center;  
 }
-.appointmentContent
+.appointmentContent,.appointmentContent1
 {
       height:100%;
       width:100%;
       overflow-y:scroll; 
 }
-.appointmentContainer
+.appointmentContainer,.appointmentContainer1
 {
       height:100%;
       width:100%; 
       overflow-y:scroll; 
 }
+
 .patImage
 {
    height:150px;
@@ -267,7 +268,7 @@ width:100%;
    padding:5px; 
    border:1px solid black; 
 }
-.patientDetailContainer
+.patientDetailContainer,.patientDetailContainer1
 {
    background-color:white;
    padding:15px;
@@ -275,7 +276,7 @@ width:100%;
    font-size:20px;
    border-radius:15px; 
 }
-.appointmentMainContainer
+.appointmentMainContainer,.appointmentMainContainer1
 {
   display:flex;
   flex-wrap:wrap;
@@ -291,14 +292,14 @@ width:100%;
    justify-content:space-around;
    align-items:center; 
 }
-.appointmentDividingContainer
+.appointmentDividingContainer,.appointmentDividingContainer1
 {
     background-color:orange; 
     border-radius:15px;
     margin:20px; 
     padding:20px; 
 }
-.appointmentFixingContainer
+.appointmentFixingContainer,.appointmentFixingContainer1
 {
    display:none; 
    animation-name:fixing;
@@ -324,6 +325,27 @@ width:100%;
    justify-content: center;
    align-items: center;
 }
+.updaterContainer
+{
+  background-color:white;
+   padding:15px;
+   margin:15px;
+   font-size:15px;
+   border-radius:15px;    
+   display:none; 
+   animation-name:fixing;
+   animation-duration:0.5s;
+   animation-iteration-count:1;
+   animation-timing-function:ease-in-out;
+}
+.updaterDecider
+{
+   display:flex;
+   flex-wrap:wrap;
+   justify-content:center;
+   align-items:center;        
+}
+
 @keyframes fixing
 {
   0%{transform:scale(0)}
@@ -346,6 +368,16 @@ width:100%;
 {
     cursor: pointer;
 }
+.appointmentFixedContent
+{
+   background-color:white;
+   padding:15px;
+   margin:15px;
+   font-size:20px;
+   border-radius:15px;    
+}
+
+
 @media only screen and (max-width: 600px) {
      .fromLeft
      {
