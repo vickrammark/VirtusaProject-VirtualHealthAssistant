@@ -12,12 +12,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </head>
+ <%
+              
+                String email=(String)session.getAttribute("message");
+                if(email.equals(""))
+                {
+                    response.sendRedirect("Login.jsp");
+                }
+            %>
     <body>
         <div class="nav">
-          <nav class="navbar navbar-expand-sm" style="background-color:#FB053C ">
+              <nav class="navbar navbar-expand-sm mt-0" style="background-color:blueviolet">
                <ul class="navbar-nav">
                    <li class="nav-item">
-                       
                        <a class="nav-link" href="index.jsp" style="color:white;font-size:20px;font-weight:bold">Home</a>
                    </li>
                    <li class="nav-item">
@@ -29,12 +36,9 @@
                </ul>
               <div class="fromLeft">
                    <div class="nav-item">
-                       <a class="nav-link" href="Login.jsp" style="color: white;font-size:20px;font-weight:bold">Login</a>
+                       <a class="nav-link" href="Login.jsp" style="color: white;font-size:20px;font-weight:bold">LogOut</a>
                    </div>                   
-                   <div class="nav-item">
-                       <a class="nav-link" href="signUpSelector.jsp" style="color: white;font-size:20px;font-weight:bold">SignUp</a>
-                   </div>
-              </div>
+                </div>
           </nav>
         </div>    
         <div class="row row1">
@@ -58,7 +62,7 @@
                     <a href="#" class="profileLink">Profile<span style='font-size:15px;margin-left:6px'>&#10087;</span></a>
                 </div>
                 <div class="doctor menuitems">
-                    <a href="#" class="">Your Doctors<span style='font-size:15px;margin-left:6px'>&#10087;</span></a>
+                    <a href="#" class="doctorLink">Your Doctors<span style='font-size:15px;margin-left:6px'>&#10087;</span></a>
                 </div>
                 <div class="result menuitems">
                     <a href="#" class="resultLink">Lab Results<span style='font-size:15px;margin-left:6px'>&#10087;</span></a>
@@ -319,12 +323,46 @@
               <div class="appointmentContainer">
         <p style="font-size:20px;" class="mapper appointmentChoosingMapper"><span style="font-size:20px;margin-left:6px"><</span>Go Back</p>                    
                   <div class="appointmentContent">
-                      
                   </div>
               </div>
-          </div>      
+            <div class="myDoctorContainer">
+                <div class="myDoctorContent">
+                    <div class="row m-0"> 
+                        <div class="assistContainer col-lg-3 col-sm-3  col-xs-10">
+                            <div class="doctorsFixed">
+                               <button class="chooser">Doctors</button>
+                            </div>
+                           <div class="Note">
+                               <button class="chooser">Note for Doctors</button>
+                            </div>
+                            <div class="prescription">
+                               <button class="chooser">Prescriptions</button>
+                            </div>
+                            <div class="LabRecords">
+                               <button class="chooser">Your Records</button>
+                           </div>
+                        </div>
+                        <div class="workingArea col-sm-9 col-lg-9 col-xs-10 pl-2 pr-2">
+                            <div class="fixedDoctorDetails">
+                            </div>
+                            <div class="noteContainer">
+                                
+                            </div>
+                        </div>
+                    </div>     
+                </div> 
+          </div>
+         </div>       
         <script>
                 var email=localStorage.getItem("email");
+            $(".logOut").on("click",function(){
+                <%
+                    session.setAttribute("message","");
+                    session.invalidate();
+                    response.sendRedirect("Login.jsp");
+                %> 
+             });
+
                 var left=$(document).width()/2; 
                 $(".update").css("left",left);
                 $(".imgProfile").attr("src","./pateintimageRetriver?email="+email+"&role=patient"); 
@@ -499,7 +537,9 @@
                   $(".placeSearcher").val("select");
                   $(".hospitalContent").html("");
                   $(".doctorContainer").css("display","none");
-                  $(".appointmentContainer").css("display","none");                  
+                  $(".appointmentContainer").css("display","none");       
+                  $(".myDoctorContainer").css("display","none");
+                  
             }
             });                
             });
@@ -512,7 +552,9 @@
                $(".placeSearcher").val("select");
                $(".hospitalContent").html("");
                $(".doctorContainer").css("display","none");
-               $(".appointmentContainer").css("display","none");               
+               $(".appointmentContainer").css("display","none"); 
+               $(".myDoctorContainer").css("display","none");
+               
               });
              $(".appointmentChoosingMapper").on("click",function(){
                   $(".profileContainer").css("display","none");
@@ -524,6 +566,8 @@
                   $(".hospitalContent").html("");
                   $(".doctorContainer").css("display","none");
                   $(".hospitalContainer").css("display","none");
+                  $(".myDoctorContainer").css("display","none");
+                  
              });
              $(".profileLink").on("click",function(){ 
                $(".cardDecker").css("display","flex");
@@ -535,6 +579,8 @@
                $(".hospitalContent").html("");
                $(".doctorContainer").css("display","none");
                $(".appointmentContainer").css("display","none");
+               $(".myDoctorContainer").css("display","none");
+               
               });
               
             $("#booking").on("click",function(){
@@ -546,7 +592,9 @@
                $(".placeSearcher").val("select");         
                $(".hospitalContent").html("");
                $(".doctorContainer").css("display","none");
-               $(".appointmentContainer").css("display","none");      
+               $(".appointmentContainer").css("display","none"); 
+               $(".myDoctorContainer").css("display","none");
+               
            });
                     
                $(".specializationMapper").on("click",function(){
@@ -559,6 +607,8 @@
                   $(".doctorContainer").css("display","none");
                   $(".hospitalContainer").css("display","none");  
                   $(".appointmentContainer").css("display","none");
+                  $(".myDoctorContainer").css("display","none");
+                  
                 });
                  $(".mainPageMapper").on("click",function(){
                   $(".cardDecker").css("display","flex");
@@ -568,7 +618,9 @@
                   $(".hospitalContent").html("");
                   $(".hospitalContainer").css("display","none");
                   $(".doctorContainer").css("display","none");              
-                 $(".appointmentContainer").css("display","none");               
+                 $(".appointmentContainer").css("display","none"); 
+                 $(".myDoctorContainer").css("display","none");
+                         
              });    
                $(".doctorChoosingMapper").on("click",function(){
                   $(".cardDecker").css("display","none");
@@ -579,6 +631,8 @@
                   $(".hospitalContainer").css("display","none");
                   $(".doctorContainer").css("display","none");                  
                   $(".appointmentContainer").css("display","none");
+                  $(".myDoctorContainer").css("display","none");
+                  
               });
                var specializationName="";
              $(".option").on("click",function(){
@@ -591,7 +645,9 @@
                $(".menuHeaderContent").html("Hospitals Around You");
                $(".doctorContainer").css("display","none");
                $(".hospitalContent").html("please select the cities to know the hospital and book you doctors!!!");});
-               $(".appointmentContainer").css("display","none");              
+               $(".appointmentContainer").css("display","none"); 
+               $(".myDoctorContainer").css("display","none");
+               
                $(".placeSearcher").on("input",function(){
                     var val=$(this).val();
                     if(val!=="")
@@ -697,7 +753,8 @@
                   $(".placeSearcher").val("select");
                   $(".hospitalContent").html("");
                   $(".doctorContainer").css("display","block");
-                  $(".hospitalContainer").css("display","none");                                                
+                  $(".hospitalContainer").css("display","none");
+                  $(".myDoctorContainer").css("display","none");
                  var hid=$(this).attr("id");
                  var name=$(this).attr("name");
                  var imageArray=new Array();
@@ -972,14 +1029,17 @@
                          $(".hospitalContent").html("");
                          $(".doctorContainer").css("display","none");
                          $(".hospitalContainer").css("display","none"); 
+                         $(".myDoctorContainer").css("display","none");
                          var docImageArray=new Array();
                          var docDeatailArray=new Array();
                          var appointmentDeatilArray=new Array();
+                         alert(email);
                          $.ajax({
                              type:"POST",
                              url:"appointmentController",
                              data:{
-                                 email:email
+                                 email:email,
+                                 function:"request"
                              },
                              success: function (data, textStatus, jqXHR) {
                               docDeatailArray=data.split("|");
@@ -999,7 +1059,7 @@
                                       appointmentDeatilArray[12]="Not Decided";     
                                   }
                                  $(".appointmentContent").append(
-                                        "<div class='appointmentMainContent'><div class='bookedDocImageContainer'>\n\
+                                        "<div class='appointmentMainContent' id='"+appointmentDeatilArray[9]+"'><div class='bookedDocImageContainer'>\n\
                                              <img class='profileDocImage"+x+" prodocImage ' src=''>\n\
                                         </div>\n\
                                         <div class='docDetailContainer'>\n\
@@ -1028,7 +1088,7 @@
 \
                                                 </div>\n\
                                         </div> \n\
-                                       <div class='RemoveButton'>\n\
+                                       <div class='RemoveButton' id='"+appointmentDeatilArray[9]+"'>\n\
                                          <button class='btn btn-danger'>Remove</button>\n\
                                     </div>\n\
                                 </div>"
@@ -1070,8 +1130,155 @@
                            }
                          }
                       });  
-                    },5000);   
-                                      
+                    },60000);   
+                    $(".doctorLink").on("click",function(){
+                        $(".appointmentContainer").css("display","none");
+                         $(".profileContainer").css("display","none");
+                         $(".menuHeaderContent").html("Working Area");
+                         $(".cardDecker").css("display","none");
+                         $(".specializationContainer").css("display","none");
+                         $(".placeSearcher").val("select");
+                         $(".hospitalContent").html("");
+                         $(".doctorContainer").css("display","none");
+                         $(".hospitalContainer").css("display","none"); 
+                         $(".myDoctorContainer").css("display","block");
+                         
+                    });
+                     var docImageArray1=new Array();
+                     var docDeatailArray1=new Array();
+                     var appointmentDeatilArray1=new Array();
+                    $(document).on("click",".doctorsFixed",function(){
+                        $(".noteContainer").css("display","none");
+                        $(".fixedDoctorDetails").css("display","block");
+                       $.ajax({
+                             type:"POST",
+                             url:"appointmentController",
+                             data:{
+                                 email:email,
+                                 function:"confirmed"
+                             },
+                             success: function (data, textStatus, jqXHR) {
+                                   
+                              docDeatailArray1=data.split("|");
+                               $(".fixedDoctorDetails").html("");
+                              for(var x=0;x<docDeatailArray1.length-1;x++)
+                              {
+                                  appointmentDeatilArray1=docDeatailArray1[x].split(",");
+                                  docImageArray1.push(appointmentDeatilArray1[3]);
+                                
+                                 $(".fixedDoctorDetails").append(
+                                        "<div class='appointmentMainContent1' id='"+appointmentDeatilArray1[9]+"'><div class='bookedDocImageContainer1'>\n\
+                                             <img class='profileDocImage1"+x+" prodocImage ' src=''>\n\
+                                        </div>\n\
+                                        <div class='docDetailContainer1'>\n\
+                                               <h4>Doctor Details1</h4> \n\
+                                                     \n\
+                                                <div class='docDetail'>\n\
+                                                     <p>Name : "+appointmentDeatilArray1[10]+"</p>   \n\
+                                                     <p>Address : "+appointmentDeatilArray1[1]+"</p>   \n\
+                                                     <p>Place_of_working : "+appointmentDeatilArray1[2]+"</p>   \n\
+                                                     <p>Email : "+appointmentDeatilArray1[3]+"\n\
+                                                     <p>Phone Number : "+appointmentDeatilArray1[4]+"</p>   \n\
+   \n\                                               <p>Gender : "+appointmentDeatilArray1[5]+"</p>   \n\
+   \n\                                               <p>Specialization : "+appointmentDeatilArray1[6]+"</p>   \n\
+   \n\                                               <p>Qualification : "+appointmentDeatilArray1[7]+"</p>   \n\
+   \n\                                               <p>Experience : "+appointmentDeatilArray1[8]+"</p>   \n\
+   \n\
+                                               </div>   \n\
+                                        </div> \n\
+                                        <div class='appointmentDetailContainer1'>\n\
+                                               <h4>AppointmentDetail</h4>  \n\
+                                                <div class='appointmentDetail' id='"+appointmentDeatilArray1[9]+"'> \n\
+                                                    <p>Appointment Date : "+appointmentDeatilArray1[10]+"</p>    \n\
+                                                    <p>Appointment Reason :"+appointmentDeatilArray1[11]+"</p>    \n\
+                                                    <p>Appointment Time : "+appointmentDeatilArray1[12]+"</p>    \n\
+                                                    <p>Appointment Confirmation : "+appointmentDeatilArray1[13]+"</p>    \n\
+\
+                                                </div>\n\
+                                        </div> \n\
+                                       <div class='RemoveButton1' id='"+appointmentDeatilArray1[9]+"'>\n\
+                                         <button class='btn btn-danger'>Remove</button>\n\
+                                    </div>\n\
+                                </div>"
+                                        
+                                  );  
+                                  }
+                                for(var y=0;y<docImageArray1.length;y++)
+                                {
+                                  $(".profileDocImage1"+y).attr("src","./pateintimageRetriver?email="+docImageArray1[y]+"&role=doctor");      
+                                   
+                                }
+            
+                              }
+                              
+                          });
+                              
+                          
+                    });
+                    $(document).on("click",".Note",function(){
+                       $(".fixedDoctorDetails").css("display","none");
+                       $(".noteContainer").css("display","block");
+                       $(".noteContainer").html("\n\
+                            <form> \n\
+                                <div class='form-group'>\n\
+                                     <label for='reason'>\n\
+                                            Enter the Issue : \n\
+                                     </label>\n\
+                                     <textarea class='form-control' id='reason' name='reason' rows='15' cols='30'>\n\
+                                     </textarea></div>   \n\
+\n\                             <div class='form-group'><label for='symptoms'>Enter the Symptoms : </label><textarea  class='form-control' id='Symptoms' name=symptoms' rows='15' cols='30'></textarea></div>  \n\
+                                <div class='form-group'><label for='effects'>Enter the Body Changes : </label><textarea class='form-control' id='effects' name='effects' rows='15' cols='30'></textarea></div> \n\
+                                <div class='form-group'><label for='complication'>Enter if you have medical complications : </label><textarea class='form-control' id='complication' name='complication' rows='15' cols='30'></textarea></div> \n\
+                                 \n\
+                                       \n\
+                            </form>  \n\
+                                <div class='buttonFixer'> \n\
+                                      <a class='btn btn-primary'>Send</a> \n\
+                                </div>      \n\
+                        ");
+                    });
+                $(document).on("click",".RemoveButton1",function(){
+                    var remove=$(".RemoveButton1").attr("id");
+                    $.ajax({
+                        type:"POST",
+                        url:"AppointmentFixerandCancelerController",
+                        data:{
+                            presId:$(".RemoveButton1").attr("id"),
+                            function:"cancel"
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            if(data==="true")
+                            {
+                               $("#"+remove).addClass("animation1").delay(500).queue(function(next){
+                                  $("#"+remove).css("display","none"); 
+                                  next();
+                               }); 
+                            }
+                        }
+                        
+                    })
+                });
+                   $(document).on("click",".RemoveButton",function(){
+                    var remove=$(".RemoveButton").attr("id");
+                    $.ajax({
+                        type:"POST",
+                        url:"AppointmentFixerandCancelerController",
+                        data:{
+                            presId:$(".RemoveButton").attr("id"),
+                            function:"cancel"
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            if(data==="true")
+                            {
+                               $("#"+remove).addClass("animation1").delay(500).queue(function(next){
+                                  $("#"+remove).css("display","none"); 
+                                  next();
+                               }); 
+                            }
+                        }
+                        
+                    })
+                });                    
         </script>
     </body>
 </html>
