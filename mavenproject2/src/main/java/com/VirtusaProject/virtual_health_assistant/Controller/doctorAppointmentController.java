@@ -30,17 +30,31 @@ public class doctorAppointmentController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
               
               PrintWriter out=resp.getWriter();
+              String function=req.getParameter("function");
               String email=req.getParameter("email");
               doctorAppointmentModal dm=new doctorAppointmentModal();
               doctorAppointmentSetter ds=dm.getAppointment(email);
               String result="";
               doctorAppointmentDao da=new doctorAppointmentDao();
-        try {
-            result=da.getAppointmentDetails(ds);
-        } catch (Exception ex) {
-           out.println(ex.getMessage());
-        }
+        if(function.equals("request"))      
+        {      
+           try {
+              result=da.getAppointmentDetails(ds);
+           } catch (Exception ex) {
+              out.println(ex.getMessage());
+            }
               resp.setContentType("text/html");
               resp.getWriter().write(result);
+        }
+        else
+        {
+           try {
+              result=da.getConfirmedPatient(ds);
+           } catch (Exception ex) {
+              out.println(ex.getMessage());
+            }
+              resp.setContentType("text/html");
+              resp.getWriter().write(result);            
+        }
     }    
 }
