@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+          http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+        version="2.1"> <persistence-unit name="com.mycompany_Bookstore_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>users</class>
+      <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.connection.username" value="root"/>
+      <property name="hibernate.connection.password" value="pass123"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/bookstoredb"/>
+    </properties>
+  </persistence-unit>
+</persistence>
+<!--schema-generation.database.action-->

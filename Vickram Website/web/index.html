@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+        .myclass
+        {
+         border:1px solid black;
+         padding: 10px;
+         margin: 0px auto;
+         margin-top:50px;
+        }
+        .header
+        {
+            text-align:center;
+            background-color:royalblue;
+            color: white;
+            height:200px;
+        }
+        .header h1
+        {
+            padding-top:100px; 
+        }
+        .SignUp
+        {
+            display:inline-block; 
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container-fluid header">
+        <h1>Vickram Website</h1>
+        </div>
+        <br/>
+        <hr>
+        <br/>
+        <h2 style="color:dodgerblue">Please Login To Proceed</h2>
+        <div class="container myclass mb-3">
+            <form id="form" method="POST" action="LoginValidator" >
+                <label for="Name">Name</label><input id="First_Name" name="Name" type="text" placeholder="Name" required class="form-control mb-3 checker">
+                <label for="Email">Email</label><input id="Email" name="Email" type="email" placeholder="Email" required class="form-control mb-3 checker">
+                <label for="Password">Password</label><input id="Password" name="Password" type="password" placeholder="Password" required class="form-control mb-3 checker"> 
+                <input type="submit" id="submit" class="btn btn-primary" value="submit">
+                <a class="btn btn-primary SignUp" href="#">SignUp</a>
+            </form>
+        </div>
+        <script>
+            
+          $(document).ready(function(){
+              $("#submit").on("click",function(event){
+                            var Fname=$("#First_Name").val();
+                            var Pass=$("#Email").val();
+                            var data={"Fname":Fname,"Pass":Pass};
+                            var temp=JSON.stringify(data);
+                             $.ajax({
+                                 type:'POST',
+                                 url:'LoginValidator',
+                                 data:{
+                                    result:temp
+                                      },
+                                 success: function (data, textStatus, jqXHR) {
+                                 window.alert(data);
+                                 window.alert(textStatus);
+                                 window.console.log(data);
+                                  }
+                                
+                                });
+                    
+                         });         
+                     });
+                
+        </script>
+    </body>
+</html>

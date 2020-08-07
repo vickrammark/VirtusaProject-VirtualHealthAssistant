@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="CSS/style.css"> 
+        <script src="JS/javascriptSignIn.js"></script>
+    </head>
+    <body>
+        <div id="siginForm">
+            <form name="fname" method="post" action="logincheck" id="fname">
+                <div id="unameLabel">Username</div><div id="unameValue"><input name="uname" type="text" id="name" placeholder="Username" required></div>
+                <div id="emailLabel">E-mail</div><div id="emailValue"><input name="email" type="email" id="mail" placeholder="E-mail" required></div>
+                <div id="passwordLabel">Password</div><div id="passwordValue"><input name="pass" type="text" id="pass" placeholder="Password" required></div>
+                <div id="siginLabel"><input id="submit" name="submit" type="submit" value="sigin" required></div>
+            </form>
+            <button id="Login"><a href="WEB-INF/Login/loginPage.html">Login</a></button>
+        </div>
+    </body>
+</html>

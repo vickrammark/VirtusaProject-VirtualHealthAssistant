@@ -1,0 +1,149 @@
+
+html
+{
+background-image:url(images/background.jpg);
+background-repeat:no-repeat;
+background-size:cover; 
+width: 100%;
+height: 100%;
+}
+#login
+{
+    margin: 0px auto;
+    height: 500px;
+    width:600px;
+    margin-top: 30px;
+    background-color:rgba(0,0,0,0.4); 
+    color: white;
+    padding:5px;
+}
+@media all and (max-width:700px)
+{
+    #name1
+    {
+      width:130px;
+      font-size:10px;
+      font-size: 15px;
+    }
+    #pass1
+    {
+      width:130px;
+      font-size:10px;
+      margin-bottom: 10px;
+      font-size: 15px;
+
+    }   
+    #login
+    {
+        width:350px;
+    }
+    #submittag
+    {
+        margin-left:0px;
+        height: 100px;
+        width:200px;
+    }
+    #label1
+    {
+        width:100px;
+        font-size: 10px;
+        margin-right:0px; 
+    }
+    #label2
+    {
+        width:100px;
+        font-size: 10px;
+         margin-right:0px; 
+    
+    }    
+}
+
+#name1
+{
+    text-align: center;
+    color: black;
+    font-size:20px; 
+    font-family: cursive; 
+        border-radius:30px; 
+
+}
+#nametag
+{
+    margin: 0px auto;
+    margin-bottom:10px; 
+}
+#passtag
+{
+    margin: 0px auto;
+}
+
+
+#pass1
+{
+    text-align: center;
+    color: black;
+    font-size:20px; 
+    font-family: cursive;
+        border-radius:30px; 
+
+}
+#loginImage
+{
+    width:200px;
+    height:200px;
+    border: 1px solid white;
+    margin: 0px auto;
+    margin-top: 30px;
+    padding-bottom: 0px;
+}
+#logintag
+{
+ margin: 0px auto;
+ margin-top: 30px;
+ position: relative;
+}
+#loginbuttion
+{
+     text-align: center;
+    font-size:20px; 
+    font-family: cursive;
+    width: 200px;
+    border-radius:30px; 
+    cursor: pointer;
+}
+#loginbuttion:hover,#name1:hover,#pass1:hover
+{
+    box-shadow: 1px 1px 5px 5px white;
+}
+#submittag :active
+{
+    font-size:18px; 
+}
+#submittag
+{
+    margin-top: 10px;
+    width:250px;
+    height:100px;
+    margin: 0px auto;
+    margin-top: 10px;
+}
+
+
+#label1
+{
+     text-align: center;
+    font-size:20px; 
+    font-family: cursive; 
+    margin: 8px;
+}
+#label2
+{
+     text-align: center;
+    font-size:20px; 
+    font-family: cursive;
+     margin:8px;
+}
+
+
+
+
