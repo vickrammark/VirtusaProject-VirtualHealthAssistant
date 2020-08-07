@@ -18,6 +18,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </head>
+      <%
+               
+                String email=(String)session.getAttribute("message");
+                if(email.equals(""))
+                {
+                    response.sendRedirect("Login.jsp");
+                }
+            %>
     <body>
         <nav class="navbar navbar-expand-sm mt-0" style="background-color:blueviolet">
                <ul class="navbar-nav">
@@ -33,7 +41,7 @@
                </ul>
               <div class="fromLeft">
                    <div class="nav-item">
-                       <a class="nav-link" href="LogOut.jsp" style="color: white;font-size:20px;font-weight:bold">LogOut</a>
+                       <a class="nav-link logOut" href="#" style="color: white;font-size:20px;font-weight:bold">LogOut</a>
                    </div>                   
                    <div class="nav-item">
                        <a class="nav-link" href="signUpSelector.jsp" style="color: white;font-size:20px;font-weight:bold">Donate Us</a>
@@ -231,6 +239,13 @@
            </div>    
 
         <script>
+             $(".logOut").on("click",function(){
+                <%
+                    session.setAttribute("message","");
+                    session.invalidate();
+                    response.sendRedirect("Login.jsp");
+                %> 
+             });
              var email=localStorage.getItem("email");
             
         $(".profileImage").attr("src","pateintimageRetriver?email="+email+"&role=doctor");
@@ -574,7 +589,6 @@
                            function:"request"
                        },
                        success: function (data, textStatus, jqXHR) {
-                           alert(data);
                            $(".appointmentContent").html("");
                            if(data.includes("|"))
                            {    
@@ -745,9 +759,6 @@
                               patientImageArray1.push(AppointmentDetailArray1[1]);
                               $(".patientContent").append(
                                "<div class='appointmentDividingContainer1' id='box"+AppointmentDetailArray1[5]+"'>\n\
-                                    <div class='alert alert-success updateMessage'>\n\
-                                        Successfully Updated the Appointment     \n\
-                                    </div>  \n\
                                     <div class='appointmentMainContainer1'>\n\
                                         <div class='.patientImageContainer'>\n\
                                              <img class='patientImage1"+x+" patImage' src=''> \n\
@@ -767,6 +778,24 @@
                                                 <p>Appointment Time : "+AppointmentDetailArray1[8]+"</p> \n\
                                                 <p>Appointment Confirmation : "+AppointmentDetailArray1[9]+"    \n\
                                           </div>      \n\
+                                          <div class='updaterContainer'> \n\
+                                              <div class='alert alert-success updateMessage'>\n\
+                                                    Successfully Updated the Appointment     \n\
+                                              </div>  \n\
+                                \n\
+                                             <div class='form-group'> \n\
+                                                     <input type='date' id='AppDate1"+AppointmentDetailArray1[5]+"' class='form-control' placeholder='Appointment Date' required name='AppDate1"+AppointmentDetailArray1[5]+"'>\n\
+                                             </div> \n\
+                                             <div class='form-group'> \n\
+                                                     <input type='time' id='AppTime1"+AppointmentDetailArray1[5]+"' class='form-control' placeholder='Appointment Time' required name='AppTime1"+AppointmentDetailArray1[5]+"'>\n\
+                                             </div> \n\
+                                             <div class='form-group'> \n\
+                                                     <input type='text' id='AppConfirmation"+AppointmentDetailArray1[5]+"' class='form-control' placeholder='Yes/No' required name='AppConfirmation"+AppointmentDetailArray1[5]+"'>\n\
+                                             </div> \n\
+                                             <div class='updaterDecider'> \n\
+                                                    <button class='btn btn-primary updateAppDetails' id='"+AppointmentDetailArray1[5]+"'>update</button>  \n\
+                                              </div>    \n\
+                                          </div>   \n\
                                     </div>\n\
                                     <div class='decidingContainer' id='"+AppointmentDetailArray1[5]+"'>\n\
                                         <button class='btn btn-primary updateAppointment' id='"+AppointmentDetailArray1[5]+"'>Update</button> \n\
@@ -792,10 +821,39 @@
 
                });
                $(document).on("click",".updateAppointment",function(){
+                    $(".updaterContainer").css("display","block");
+               });
+               $(document).on("click",".updateAppDetails",function(){
+                var presId=$(this).attr("id");
+          
+                var appDate1=$("#AppDate1"+presId).val();
+                var appTime1=$("#AppTime1"+presId).val();
+                var appConfirmation=$("#AppConfirmation"+presId).val();
+               
                   $.ajax({
                       type:"post",
-                      url:""
+                      url:"AppointmentFixerandCancelerController",
+                      data:{
+                          presId:$(this).attr("id"),
+                          AppDate:appDate1,
+                          AppTime:appTime1,
+                          AppConfirmation:appConfirmation,
+                          function:"update"
+                      },
+                      success: function (data, textStatus, jqXHR) {
+                 
+                       if(data==='true')
+                       {
+                          $(".updateMessage").fadeIn(700).css("display","inline-block").delay(1000).queue(function(next){
+                                $(this).addClass("goOut");
+                                next();
+                                $(".updateMessage").css("display","none");
+                                next();
+                          });
+                       }
+                      }
                   }) 
+ 
                });
         </script>
     </body>
