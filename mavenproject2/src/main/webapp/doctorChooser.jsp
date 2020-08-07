@@ -49,8 +49,8 @@
 
         <script>
             <%
-                HttpSession session1=request.getSession();
-                String email=(String)session1.getAttribute("message");
+                
+                String email=(String)session.getAttribute("message");
                 if(email.equals(""))
                 {
                     response.sendRedirect("/Login.jsp");
